@@ -1,10 +1,14 @@
 # Golang tutorial
 
-Youtube Link: https://www.youtube.com/watch?v=YS4e4q9oBaU&ab_channel=freeCodeCamp.org
+*Hi there! this document contains key snippets of information that I have been able to make note of while going through a 6 hour video on the basics of Golang, the from the following [Youtube Video ](https://www.youtube.com/watch?v=YS4e4q9oBaU&ab_channel=freeCodeCamp.org).  '*
+
+*Before starting off with exploring the code, you might want to have a look at the following [link](https://www.cyberciti.biz/faq/how-to-install-gol-ang-on-ubuntu-linux/) or follow the steps mentioned in the first part of the above video'*
+
+*To quickly start off you can cd to src/github.com/YellowDemonDhruv/firstapp/ and run the command go run Main.go'*
 
 ## Project structure
 
-- The main code file is placed in a folder structure "github.com/YellowDemon/" so that whenever you want to fetch this app from an external target, you can use the command "go fetch github.com/YellowDemon/<appName>"
+- The main code file is placed in a folder structure "github.com/YellowDemonDhruv/" so that whenever you want to fetch this app from an external target, you can use the command "go fetch github.com/YellowDemonDhruv/gocode"
 
 - When we build a go file, using go build <filePath>, the output is a compiled binary file which can be directly run on the terminal by just typing in the file name
 
