@@ -14,6 +14,7 @@
 
 ## Variables
 
+
 ### Variable definition in GOLANG
 
 - An UPPERCASE variable is exposed to the global package scope
@@ -40,7 +41,7 @@
 
 #### Numeric types
 
-##### Integers
+Integers
 - Signed integers ( both positive and negative integers )
     - int type has varying size, but min 32 bits ( the most common type of integer that we would be dealing in any application )
     - If we need more control we can use the 8bit(int8) through 64 bit(int64)
@@ -57,7 +58,7 @@
 - Can't mix types in the same family! (uint16 + uint32 = error)
 
 
-##### Floating point
+Floating point
 - 32 and 64 bit versions
 
 - Literal styles
@@ -68,7 +69,7 @@
 - Arithmetic operations
     - Add, sub, mul, div, <s>remainder</s>
 
-##### Complex number
+Complex number
 - Zero value is 0 + 0i
 
 - Built up from float numbers ( 32 or 64 ) 
@@ -82,14 +83,140 @@
 
 #### Text types
 
-##### Strings
+Strings
 - UTF-8
 - Immutable
 - Can be concatenated with the + operator
 - Can be converted to []byte
 
-##### Rune
+Rune
 - UTF-32
 - ALias for int32
 - Special methods normally required to process
     - E.g. [strings.Reader#ReadRune](https://golang.org/pkg/strings/#Reader.ReadRune)
+
+
+## Constants
+
+### Constants can only be set as values which can be read during compile time
+
+Eg: If you want to set the value of a constant c as math.Sin(1.57), this cannot happen because, to set the value of c, the fucntion math.Sin() has to be executed. 
+
+Constants can be made of any other primitive types as the variables
+
+### Constants are super cool !!
+Constants need not be strictly typed. For example, if you declate var i = 10, the type of i will always be an 'int' unless it is strictly typed to be of any other type. But this is not the case with constants. If we declare const a = 10, we can perform an addition with any int, float or even a complex variable or constant.
+
+- Constants are immutable, but can be shadowed - we can not only change the value but also the type 
+
+- The value of the constant has to be calculable at compile time
+
+ - Named like variables
+    - PascalCase for exported constants
+    - camelCase for internal constants
+
+- Typed constants work like immutable variables
+    - Can interoperate only with the same type 
+
+- Untyped constants work like literals
+    - Can interoperate with similar types : Constants are super cool !!
+
+## Enumerated constants
+
+- Special symbol iota allows related constants to be created easily
+- Iota starts at 0 in each const block and increments by one
+- Watch out for constant values that match zero values for variables
+
+## Enumerated expressions
+- Operations that can be determined at compile time are allowed
+    - Arithmetic
+    - Bitwise operations
+    - Bitshifting
+
+## Arrays 
+
+- Collecton of items with the same type
+
+- Fixed size at compile time
+
+- Declaration styles
+    - a := [3]int{1,2,3}
+    - a := [...]int{1,2,3}
+    - var a [3]int
+    
+- Access via a zero-based index
+    - a := [3]int {1,2,3} // a[1] == 3
+
+- len function returns the size of the array
+
+- Copies refer to different underlynig data, no memory reference, expensive copy operations
+
+## Slices
+
+- Copies of slices refer to same underlying array
+
+### Creation styles
+- Slice existing array or slice
+
+- Literal style
+
+- Via make function
+    - a := make( []int, 10 ) // create slice with capacity and length == 10
+
+    - a := make( []int, 10, 100 ) // slice with length == 10 and calacity == 100
+
+    - len function returns length of slice ( number of elements present )
+
+    - cap function returns the length of the underlying array
+
+    - append function to add elements to a slice
+        - May cause expensive copy operation if underlying array is too small as compared to the number of elements being added, since the slice capacity needs to be reset
+
+## Maps
+- Maps are collections of value types that are accessed via keys
+
+```
+	mapA := map[string]int {
+		"California" : 123,
+		"Berkley" : 345,
+		"New jersey" : 456,
+	}
+
+```
+- Created via literals or via the "make" function
+
+- Members are accessed via [key] syntax
+    - myMap["key"] = "value"
+
+- Check for presence with "value, ok" form of result
+    - pop, ok := statePopulations["Oho"]
+    - ok == false
+
+- Multiple assignments refer to the same underlying data, maps are memory referenced
+
+## Structs
+- Collections of disparate data types that describe a single concept
+
+- Keyed by named fields
+
+- Normally created as types, but anonymous types are allowed.
+    - Anonymous structs are usually short lived
+
+- Structs are value referenced
+
+- No inheritence, but we can use composition via embedding
+    ```
+
+    type human struct {
+        name string
+        age int
+    }
+
+    type Doctor struct {
+        human // embedded struct
+        degree string
+        speciality string
+    }
+    ```
+
+- Tags can be added to struct fields to describe a field
