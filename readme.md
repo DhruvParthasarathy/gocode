@@ -220,3 +220,93 @@ Constants need not be strictly typed. For example, if you declate var i = 10, th
     ```
 
 - Tags can be added to struct fields to describe a field
+
+## If statements
+
+- Initializer syntax
+
+    ``` 
+    if pop, ok := statePopulations["California"]; ok {
+		fmt.Println("California pop: ",pop)
+	}
+    ```
+
+    The variable 'pop' is scoped only to this if block
+
+- Comparison operators
+
+- Logical operators
+
+- Short circuiting - in an OR operations, if any one of the checks are true, the remaining tests are not going to be checked
+
+- If - else if - else statements
+
+- Equality of floats
+    While checking 2 floating point numbers, it is better to check if the error between the 2 numbers is below a certain threshold value rather than directly checking the numbers themselves ( maybe < 0.01 )
+
+## Switch statements
+
+- Switch on a tag
+
+- Cases with multiple tests
+    ```
+    switch 3 {
+	case 1, 5, 10:
+		fmt.Println("one, five, or 10")
+	case 2, 4, 6:
+		fmt.Println("two, four or 6")
+	default:
+		fmt.Println("another number")
+	}
+    ```
+
+- Initializers
+    ```
+    switch i := 2 + 3; i {
+	case 1, 5, 10:
+		fmt.Println("one, five, or 10")
+	case 2, 4, 6:
+		fmt.Println("two, four or 6")
+	default:
+		fmt.Println("another number")
+	}
+    ```
+
+- Switches with no tags
+    ```
+    i:= 10
+	switch {
+	case i <= 10:
+		fmt.Println("less than or equal to 10")
+	case i <= 20:
+		fmt.Println("less than or rqual to 20")
+	default:
+		fmt.Println("greater than 20")
+	}
+    ```
+
+- Fallthrough vs break keywords
+    - implicit breaks
+    - explicit fallthrough
+
+- Type switches 
+    - Used on an empty interface
+
+- Breaking out of execution using break statement
+    ```
+    var j interface{} = [4]string{}
+	switch j.(type) {
+	case int :
+		fmt.Println("j is an int")
+	case float64:
+		fmt.Println("j is a float64")
+	case [4]int:
+		fmt.Println("j is a [4]int object")
+		if true{
+			break // If a condition is satisfied, break out of the statement and do not execute the remaining statements under this case
+		}
+		fmt.Println("This line is not executed as code breaks out of switch block")
+	default:
+		fmt.Println("Idk the type of this object")
+	}
+    ```
