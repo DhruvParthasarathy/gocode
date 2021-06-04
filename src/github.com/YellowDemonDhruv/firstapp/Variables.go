@@ -6,24 +6,24 @@ import (
 	// "strconv"
 ) 
 
-var A int = 100 // UPPERCASE - Exposed to package global scope
+// var A int = 100 // UPPERCASE - Exposed to package global scope
 
-var z byte // Unused variable at package level
+// var z byte // Unused variable at package level
 
-var l byte = 50 // Pacakge level variables - we cannot use the ':=' syntax 
+// var l byte = 50 // Pacakge level variables - we cannot use the ':=' syntax 
 
 
 // declaring groups of variables together - variable blocks
-var ( 
-	actorName string = "Dhruv Parthasarathy"
-	companion string = "Aditya Ananth"
-	doctorNumber int = 3
-	season int = 11
-)
+// var ( 
+// 	actorName string = "Dhruv Parthasarathy"
+// 	companion string = "Aditya Ananth"
+// 	doctorNumber int = 3
+// 	season int = 11
+// )
 
-var ( 
-	counter int = 0
-)
+// var ( 
+// 	counter int = 0
+// )
 
 
 // func main() {
